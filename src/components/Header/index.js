@@ -1,6 +1,8 @@
 import { FiSearch, FiShoppingBag } from 'react-icons/fi';
 
-import { Container, Content, Search } from './styles';
+import {
+  Container, Content, Search, Shopping,
+} from './styles';
 
 export function Header() {
   return (
@@ -11,7 +13,10 @@ export function Header() {
           <input placeholder="Procurando por algo específico?" />
           <FiSearch size={20} />
         </Search>
-        <FiShoppingBag size={24} />
+        <Shopping>
+          <FiShoppingBag size={24} />
+          <span>2</span>
+        </Shopping>
       </Content>
     </Container>
   );
