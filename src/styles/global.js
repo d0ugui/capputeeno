@@ -7,4 +7,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: ${({ theme }) => theme.fonts.primary}
   }
+
+  body {
+    background-color: ${({ theme }) => theme.backgroundColor}
+  }
 `;
