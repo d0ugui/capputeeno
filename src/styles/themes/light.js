@@ -6,7 +6,7 @@ export default {
   headerLogo: '#5D5D6D',
   textColor: '#737380',
   textSelected: '#41414D',
-  backgroundColor: '#DEDEDE',
+  backgroundColor: '#F0F0F5',
   sublime: '#FFA585',
   buttonsPagination: '#E9E9F0',
   buttonPaginationSelected: '#F5F5FA',
