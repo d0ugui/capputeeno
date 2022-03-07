@@ -11,4 +11,8 @@ export default createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.backgroundColor}
   }
+
+  a {
+    text-decoration: none;
+  }
 `;

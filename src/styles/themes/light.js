@@ -13,4 +13,6 @@ export default {
   itemInfo: 'rgba(255, 255, 255, 0.4)',
   itemInfoPrice: '#09090A',
   listItemSublime: '#DCE2E6',
+  productReturn: '#617480',
+  buttonProduct: '#115D8C',
 };
