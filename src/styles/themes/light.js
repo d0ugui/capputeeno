@@ -15,4 +15,5 @@ export default {
   listItemSublime: '#DCE2E6',
   productReturn: '#617480',
   buttonProduct: '#115D8C',
+  buttonFinish: '#51B853',
 };
