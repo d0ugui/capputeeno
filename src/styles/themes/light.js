@@ -7,4 +7,6 @@ export default {
   textSelected: '#41414D',
   backgroundColor: '#DEDEDE',
   sublime: '#FFA585',
+  buttonsPagination: '#E9E9F0',
+  buttonPaginationSelected: '#F5F5FA',
 };
