@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from '../../src/features/cart';
+
 import { FiShoppingBag } from 'react-icons/fi';
 import { GrUndo } from 'react-icons/gr';
 import imgTest from '../../src/assets/caneca.png';
 import { Container, Content, ProductDetails } from './styles';
 
 export default function product() {
+  const dispatch = useDispatch();
+  const actualData = useSelector((state) => state.cart.value);
+
   return (
     <Container>
       <Link href="/">
@@ -36,7 +42,16 @@ export default function product() {
               produto.
             </p>
           </div>
-          <button type="button">
+          <button type="button" onClick={() => {
+            dispatch(addItem({
+              product: {
+                id: 1,
+                name: 'douglas',
+                qty: 1
+              }
+            }))
+          }}>
+            {console.log(actualData)}
             <FiShoppingBag />
             Adicionar ao carrinho
           </button>

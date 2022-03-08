@@ -6,6 +6,8 @@ import { Navbar } from '../src/components/Navbar';
 import { ListProducts } from '../src/components/ListProducts';
 import { Pagination } from '../src/components/Pagination';
 
+
+
 export default function Home({ data }) {
   return (
     <>
