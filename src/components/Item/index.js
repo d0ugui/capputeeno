@@ -1,15 +1,14 @@
 import Image from 'next/image';
 
-import imgTest from '../../assets/caneca.png';
 import { Container, ItemInfo } from './styles';
 
-export function Item() {
+export function Item({ name, price, url}) {
   return (
     <Container>
-      <Image src={imgTest} />
+      <img src={url} />
       <ItemInfo>
-        <p>Caneca de cerâmica rústica</p>
-        <span>R$ 40,00</span>
+        <p>{name}</p>
+        <span>R$ {price}</span>
       </ItemInfo>
     </Container>
   );

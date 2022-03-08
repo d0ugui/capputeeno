@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ListProducts = styled.div`
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
 
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
-
 
   margin-top: 32px;
 `;

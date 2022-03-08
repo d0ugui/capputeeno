@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 256px;
-
   display: flex;
   flex-direction: column;
 
   span {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+  }
+
+  img {
+    width: 100%;
   }
 `;
 
