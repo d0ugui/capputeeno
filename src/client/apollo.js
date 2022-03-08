@@ -4,7 +4,7 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+  uri:'http://localhost:3333',
   cache: new InMemoryCache()
 });
 

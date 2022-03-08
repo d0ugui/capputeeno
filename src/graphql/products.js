@@ -2,14 +2,11 @@ import { gql } from '@apollo/client';
 
 export const allProducts = gql`
   query AllProducts{
-    products {
+    allProducts (page: 1, perPage: 12) {
       id
       name
-      price
-      images {
-        url
-      }
-	  }
-  }`;
-
-
+      price_in_cents
+      image_url
+    }
+  }
+`;

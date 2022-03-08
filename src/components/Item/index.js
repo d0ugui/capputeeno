@@ -8,7 +8,7 @@ export function Item({ name, price, url}) {
       <img src={url} />
       <ItemInfo>
         <p>{name}</p>
-        <span>R$ {price}</span>
+        <span>{price}</span>
       </ItemInfo>
     </Container>
   );

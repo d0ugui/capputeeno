@@ -4,13 +4,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  span {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
   img {
     width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 300px;
   }
 `;
 

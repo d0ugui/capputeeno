@@ -15,12 +15,12 @@ export default function Home({ data }) {
       <Navbar />
       <Pagination />
       <ListProducts>
-        {data.products.map((product) => {
+        {data.allProducts.map((product) => {
          return (<Item
           key={product.id}
           name={product.name}
-          price={product.price}
-          url={product.images[0].url}
+          price={(product.price_in_cents / 100).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' })}
+          url={product.image_url}
         />
         )})}
       </ListProducts>
