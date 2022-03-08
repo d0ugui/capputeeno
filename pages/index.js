@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
@@ -9,20 +10,34 @@ import { Item } from '../src/components/Item';
 
 import { ListProducts, Footer } from '../src/styles/home';
 
-export default function Home({ data }) {
+export default function Home({ data: { allProducts }}) {
+  const currentPage = useSelector((state) => state.page.value);
+
+  useEffect(() => {
+    console.log(currentPage);
+  }, [currentPage])
+
   return (
     <>
       <Navbar />
       <Pagination />
       <ListProducts>
-        {data.allProducts.map((product) => {
-         return (<Item
-          key={product.id}
-          name={product.name}
-          price={(product.price_in_cents / 100).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' })}
-          url={product.image_url}
-        />
-        )})}
+        {allProducts.map((product) => {
+          return (
+            <Item
+              key={product.id}
+              name={product.name}
+              price={
+                (product.price_in_cents / 100)
+                .toLocaleString(
+                  "pt-BR",
+                  {style: 'currency', currency: 'BRL' }
+                )
+              }
+              url={product.image_url}
+            />
+          )
+        })}
       </ListProducts>
       <Footer>
         <Pagination />

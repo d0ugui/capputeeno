@@ -5,6 +5,7 @@ import client  from '../src/client/apollo';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from '../src/features/cart';
+import pageReducer from '../src/features/page';
 
 import { Header } from '../src/components/Header';
 import themes from '../src/styles/themes/index';
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }) {
   const store = configureStore({
     reducer: {
       cart: cartReducer,
+      page: pageReducer,
     }
   })
 
