@@ -8,5 +8,9 @@ export const allProducts = gql`
       price_in_cents
       image_url
     }
+
+    _allProductsMeta {
+      count
+    }
   }
 `;

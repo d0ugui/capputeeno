@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { allProductsCount } from '../src/features/page';
 
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
@@ -10,12 +11,11 @@ import { Item } from '../src/components/Item';
 
 import { ListProducts, Footer } from '../src/styles/home';
 
-export default function Home({ data: { allProducts }}) {
-  const currentPage = useSelector((state) => state.page.value);
+export default function Home({ data: { allProducts, _allProductsMeta }}) {
+  const dispatch = useDispatch();
+  const totalProd = _allProductsMeta.count;
 
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage])
+  dispatch(allProductsCount({ total: totalProd }))
 
   return (
     <>

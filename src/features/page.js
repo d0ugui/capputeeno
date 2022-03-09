@@ -3,21 +3,26 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pageSlice = createSlice({
   name: 'page',
   initialState: {
-    value: 1
+    currentPage: 1,
+    totalPages: 0,
   },
   reducers: {
-    nextPage: (state, action) => {
+    next: (state, action) => {
       // increment 1 in page value
-      state.value = state.value + 1
-      console.log(state.value)
+      state.currentPage = state.currentPage + 1
+      console.log(state.currentPage)
     },
-    previousPage: (state, action) => {
+    previous: (state, action) => {
       // decrement 1 in page value
-      state.value = state.value - 1
-      console.log(state.value)
+      state.currentPage = state.currentPage - 1
+      console.log(state.currentPage)
+    },
+    allProductsCount: (state, action) => {
+      state.totalPages = 20;
+      console.log(state.currentPage)
     }
   }
 })
 
-export const { nextPage, previousPage } = pageSlice.actions;
+export const { next, previous, allProductsCount } = pageSlice.actions;
 export default pageSlice.reducer;
