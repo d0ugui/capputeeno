@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { allProductsCount } from '../src/features/page';
 
 import client from '../src/client/apollo';
@@ -14,15 +15,21 @@ import { ListProducts, Footer } from '../src/styles/home';
 export default function Home({ data: { allProducts, _allProductsMeta }}) {
   const dispatch = useDispatch();
   const totalProd = _allProductsMeta.count;
-
   dispatch(allProductsCount({ total: totalProd }))
+
+  const [products, setProducts] = useState(allProducts);
+  const currentPage = useSelector((state) => state.page.currentPage);
+
+  useEffect(() => {
+
+  }, [currentPage])
 
   return (
     <>
       <Navbar />
       <Pagination />
       <ListProducts>
-        {allProducts.map((product) => {
+        {products.map((product) => {
           return (
             <Item
               key={product.id}

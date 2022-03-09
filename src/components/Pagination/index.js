@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { next, previous } from '../../features/page.js';
+import { next, previous, setPage } from '../../features/page.js';
 
 import PaginationItem from '../PaginationItem';
 
@@ -21,6 +21,10 @@ export function Pagination() {
       .filter(page => page > 0)
   }
 
+  function handlePage(indexPage) {
+    dispatch(setPage({ page: indexPage}))
+  }
+
   const previousPage = currentPage > 1
     ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
     : []
@@ -33,13 +37,13 @@ export function Pagination() {
     <Container>
       <Content>
         {previousPage.length > 0 && previousPage.map((page) => {
-          return <PaginationItem key={page}>{page}</PaginationItem>
+          return <PaginationItem onClick={() => handlePage(page)} key={page}>{page}</PaginationItem>
         })}
 
-        <PaginationItem selected>{currentPage}</PaginationItem>
+        <PaginationItem onClick={() => handlePage(page)} selected>{currentPage}</PaginationItem>
 
         {nextPage.length > 0 && nextPage.map((page) => {
-          return <PaginationItem key={page}>{page}</PaginationItem>
+          return <PaginationItem onClick={() => handlePage(page)} key={page}>{page}</PaginationItem>
         })}
 
         <PaginationItem

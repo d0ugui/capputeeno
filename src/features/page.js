@@ -20,9 +20,12 @@ export const pageSlice = createSlice({
     allProductsCount: (state, action) => {
       state.totalPages = 20;
       console.log(state.currentPage)
+    },
+    setPage: (state, action) => {
+      state.currentPage = action.payload.page;
     }
   }
 })
 
-export const { next, previous, allProductsCount } = pageSlice.actions;
+export const { next, previous, allProductsCount, setPage } = pageSlice.actions;
 export default pageSlice.reducer;
