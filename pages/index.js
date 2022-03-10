@@ -45,6 +45,8 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
                 )
               }
               url={product.image_url}
+              id={product.id}
+              handleClick={product.id}
             />
           )
         })}

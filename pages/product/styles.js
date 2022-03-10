@@ -37,6 +37,11 @@ export const Content = styled.div`
   span {
     border-radius: 4px;
   }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 export const ProductDetails = styled.div`

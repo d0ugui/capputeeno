@@ -1,15 +1,17 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from '../../src/features/cart';
 
+import client from '../../src/client/apollo';
+import uniqueProduct from '../../src/graphql/uniqueProduct';
+
 import { FiShoppingBag } from 'react-icons/fi';
 import { GrUndo } from 'react-icons/gr';
-import imgTest from '../../src/assets/caneca.png';
 import { Container, Content, ProductDetails } from './styles';
 
-export default function product() {
+
+export default function Product({ data }) {
   const dispatch = useDispatch();
   const actualData = useSelector((state) => state.cart.value);
 
@@ -22,11 +24,16 @@ export default function product() {
         </span>
       </Link>
       <Content>
-        <Image src={imgTest} />
+        <img src={data.Product.image_url} />
         <ProductDetails>
-          <span>Caneca</span>
-          <h1>Caneca de cerâmica rústica</h1>
-          <strong>R$40,00</strong>
+          <span>{data.Product.category}</span>
+          <h1>{data.Product.name}</h1>
+          <strong>
+            {
+              (data.Product.price_in_cents / 100).toLocaleString("pt-BR",
+                {style: 'currency', currency: 'BRL' })
+            }
+          </strong>
 
           <small>
             *Frete de R$40,00 para todo o Brasil.
@@ -36,10 +43,7 @@ export default function product() {
           <div>
             <h2>Descrição</h2>
             <p>
-              Aqui vem um texto descritivo do produto,
-              esta caixa de texto servirá apenas de exemplo para que simule
-              algum texto que venha a ser inserido nesse campo, descrevendo tal
-              produto.
+              {data.Product.description}
             </p>
           </div>
           <button type="button" onClick={() => {
@@ -51,7 +55,6 @@ export default function product() {
               }
             }))
           }}>
-            {console.log(actualData)}
             <FiShoppingBag />
             Adicionar ao carrinho
           </button>
@@ -59,4 +62,15 @@ export default function product() {
       </Content>
     </Container>
   );
+}
+
+
+export async function getServerSideProps({ params }) {
+  const { data } = await client.query({ query: uniqueProduct, variables: { id: params.productItem } });
+
+  return {
+    props: {
+      data
+    }
+  }
 }
