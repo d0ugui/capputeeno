@@ -37,13 +37,13 @@ export function Pagination() {
     <Container>
       <Content>
         {previousPage.length > 0 && previousPage.map((page) => {
-          return <PaginationItem onClick={() => handlePage(page)} key={page}>{page}</PaginationItem>
+          return <PaginationItem onClick={() => handlePage(page)} key={page} disabled>{page}</PaginationItem>
         })}
 
-        <PaginationItem onClick={() => handlePage(page)} selected>{currentPage}</PaginationItem>
+        <PaginationItem onClick={() => handlePage(page)} selected disabled>{currentPage}</PaginationItem>
 
         {nextPage.length > 0 && nextPage.map((page) => {
-          return <PaginationItem onClick={() => handlePage(page)} key={page}>{page}</PaginationItem>
+          return <PaginationItem onClick={() => handlePage(page)} key={page} disabled>{page}</PaginationItem>
         })}
 
         <PaginationItem

@@ -10,16 +10,13 @@ export const pageSlice = createSlice({
     next: (state, action) => {
       // increment 1 in page value
       state.currentPage = state.currentPage + 1
-      console.log(state.currentPage)
     },
     previous: (state, action) => {
       // decrement 1 in page value
       state.currentPage = state.currentPage - 1
-      console.log(state.currentPage)
     },
     allProductsCount: (state, action) => {
       state.totalPages = (action.payload.total / 12);
-      console.log(state.currentPage)
     },
     setPage: (state, action) => {
       state.currentPage = action.payload.page;
