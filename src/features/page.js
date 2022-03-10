@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pageSlice = createSlice({
   name: 'page',
   initialState: {
-    currentPage: 1,
+    currentPage: 0,
     totalPages: 0,
   },
   reducers: {
@@ -18,7 +18,7 @@ export const pageSlice = createSlice({
       console.log(state.currentPage)
     },
     allProductsCount: (state, action) => {
-      state.totalPages = 20;
+      state.totalPages = (action.payload.total / 12);
       console.log(state.currentPage)
     },
     setPage: (state, action) => {

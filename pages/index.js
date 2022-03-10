@@ -5,6 +5,7 @@ import { allProductsCount } from '../src/features/page';
 
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
+import nextPage from '../src/graphql/nextPage';
 
 import { Navbar } from '../src/components/Navbar';
 import { Pagination } from '../src/components/Pagination';
@@ -20,8 +21,10 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
   const [products, setProducts] = useState(allProducts);
   const currentPage = useSelector((state) => state.page.currentPage);
 
-  useEffect(() => {
+  useEffect(async () => {
+    const { data } = await client.query({ query: nextPage, variables: { page: currentPage }});
 
+    {setProducts(data.allProducts)}
   }, [currentPage])
 
   return (

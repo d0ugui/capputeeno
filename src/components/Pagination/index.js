@@ -8,7 +8,7 @@ import { Container, Content } from './styles';
 
 export function Pagination() {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.page.currentPage);
+  const currentPage = useSelector((state) => state.page.currentPage) + 1;
   const totalPages = useSelector((state) => state.page.totalPages);
 
   const siblingsCount = 2;
