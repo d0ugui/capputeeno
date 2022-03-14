@@ -11,7 +11,7 @@ export function Pagination() {
   const currentPage = useSelector((state) => state.page.currentPage) + 1;
   const totalPages = useSelector((state) => state.page.totalPages);
 
-  const siblingsCount = 2;
+  const siblingsCount = 1;
 
   function generatePagesArray(from, to) {
     return [...new Array(to - from)]

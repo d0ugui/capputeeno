@@ -5,6 +5,8 @@ export const pageSlice = createSlice({
   initialState: {
     currentPage: 0,
     totalPages: 0,
+    filter: false,
+    filteredPages: 0,
   },
   reducers: {
     next: (state, action) => {
@@ -16,7 +18,10 @@ export const pageSlice = createSlice({
       state.currentPage = state.currentPage - 1
     },
     allProductsCount: (state, action) => {
-      state.totalPages = (action.payload.total / 12);
+      state.totalPages = Math.round((action.payload.total / 12));
+    },
+    allFilteredProductsCount: (state, action) => {
+      state.filteredPages = Math.round((action.payload.total / 12));
     },
     setPage: (state, action) => {
       state.currentPage = action.payload.page;

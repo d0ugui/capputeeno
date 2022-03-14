@@ -6,6 +6,7 @@ import { allProductsCount } from '../src/features/page';
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
 import nextPage from '../src/graphql/nextPage';
+import productsFilter from '../src/graphql/productsFilter';
 
 import { Navbar } from '../src/components/Navbar';
 import { Pagination } from '../src/components/Pagination';
@@ -15,22 +16,33 @@ import { ListProducts, Footer } from '../src/styles/home';
 
 export default function Home({ data: { allProducts, _allProductsMeta }}) {
   const dispatch = useDispatch();
-  const totalProd = _allProductsMeta.count;
-  dispatch(allProductsCount({ total: totalProd }))
 
   const [products, setProducts] = useState(allProducts);
   const currentPage = useSelector((state) => state.page.currentPage);
 
   useEffect(async () => {
+    const totalProd = _allProductsMeta.count;
+    dispatch(allProductsCount({ total: totalProd }))
+
     const { data } = await client.query({ query: nextPage, variables: { page: currentPage }});
 
-    {setProducts(data.allProducts)}
-  }, [currentPage])
+    setProducts(data.allProducts)
+  }, []);
+
+  async function productsFiltered(type) {
+    const { data } = await client.query({ query: productsFilter, variables: { filterType: type }});
+
+    const filteredTotal = data._allProductsMeta.count
+    dispatch(allProductsCount({ total: filteredTotal }))
+
+    setProducts(data.allProducts);
+  }
 
   return (
     <>
       <Navbar />
       <Pagination />
+      <button onClick={() => productsFiltered("mugs")}>setFilter</button>
       <ListProducts>
         {products.map((product) => {
           return (
@@ -61,6 +73,7 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const { data } = await client.query({ query: allProducts });
+  console.log('rodou');
 
   // Pass data to the page via props
   return { props: { data } }

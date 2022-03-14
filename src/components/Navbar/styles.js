@@ -42,7 +42,7 @@ export const Filters = styled.ul`
       width: 100%;
     }
 
-    &:first-child {
+    .one {
       position: relative;
 
       span {
