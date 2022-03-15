@@ -1,12 +1,41 @@
+import { useState } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from '../../features/page';
+
+import FilterItem from '../FilterItem';
 import { Container, Filters, Organized } from './styles';
 
 export function Navbar() {
+  const dispatch = useDispatch();
+
+  const [filters, setFilters] = useState([
+    {
+      name: 'Todos os produtos',
+    },
+    {
+      name: 'Camisetas',
+    },
+    {
+      name: 'Canecas',
+    },
+  ]);
+
+  const selectedFilter = useSelector((state) => state.page.filter);
+
   return (
     <Container>
       <Filters>
-        <li><span>Todos os produtos</span></li>
-        <li><span>Camisetas</span></li>
-        <li><span>Canecas</span></li>
+        {filters?.map((filter) => (
+          <FilterItem
+            selected={filter.name === selectedFilter}
+            onClick={() => dispatch(setFilter({ filter: filter.name }))}
+          >
+            <span>
+              {filter.name}
+            </span>
+          </FilterItem>
+        ))}
       </Filters>
       <Organized>
         <option value="valor1">Novidades</option>

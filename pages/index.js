@@ -1,17 +1,22 @@
+//* Hooks
 import React, { useState, useEffect } from 'react';
 
+//* Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { allProductsCount } from '../src/features/page';
 
+//* GraphQL
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
 import nextPage from '../src/graphql/nextPage';
 import productsFilter from '../src/graphql/productsFilter';
 
+//* Components
 import { Navbar } from '../src/components/Navbar';
 import { Pagination } from '../src/components/Pagination';
 import { Item } from '../src/components/Item';
 
+//* Styles
 import { ListProducts, Footer } from '../src/styles/home';
 
 export default function Home({ data: { allProducts, _allProductsMeta } }) {

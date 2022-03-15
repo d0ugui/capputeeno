@@ -25,5 +25,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-confusing-arrow': 'off',
     'no-shadow': 'off',
+    'no-param-reassign': 'off',
+    'no-unused-vars': 'off',
   },
 };
