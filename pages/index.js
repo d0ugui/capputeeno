@@ -14,7 +14,7 @@ import { Item } from '../src/components/Item';
 
 import { ListProducts, Footer } from '../src/styles/home';
 
-export default function Home({ data: { allProducts, _allProductsMeta }}) {
+export default function Home({ data: { allProducts, _allProductsMeta } }) {
   const dispatch = useDispatch();
 
   const [products, setProducts] = useState(allProducts);
@@ -22,18 +22,18 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
 
   useEffect(async () => {
     const totalProd = _allProductsMeta.count;
-    dispatch(allProductsCount({ total: totalProd }))
+    dispatch(allProductsCount({ total: totalProd }));
 
-    const { data } = await client.query({ query: nextPage, variables: { page: currentPage }});
+    const { data } = await client.query({ query: nextPage, variables: { page: currentPage } });
 
-    setProducts(data.allProducts)
+    setProducts(data.allProducts);
   }, []);
 
   async function productsFiltered(type) {
-    const { data } = await client.query({ query: productsFilter, variables: { filterType: type }});
+    const { data } = await client.query({ query: productsFilter, variables: { filterType: type } });
 
-    const filteredTotal = data._allProductsMeta.count
-    dispatch(allProductsCount({ total: filteredTotal }))
+    const filteredTotal = data._allProductsMeta.count;
+    dispatch(allProductsCount({ total: filteredTotal }));
 
     setProducts(data.allProducts);
   }
@@ -42,26 +42,29 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
     <>
       <Navbar />
       <Pagination />
-      <button onClick={() => productsFiltered("mugs")}>setFilter</button>
+      <button
+        type="button"
+        onClick={() => productsFiltered('mugs')}
+      >
+        setFilter
+      </button>
       <ListProducts>
-        {products.map((product) => {
-          return (
-            <Item
-              key={product.id}
-              name={product.name}
-              price={
+        {products.map((product) => (
+          <Item
+            key={product.id}
+            name={product.name}
+            price={
                 (product.price_in_cents / 100)
-                .toLocaleString(
-                  "pt-BR",
-                  {style: 'currency', currency: 'BRL' }
-                )
+                  .toLocaleString(
+                    'pt-BR',
+                    { style: 'currency', currency: 'BRL' },
+                  )
               }
-              url={product.image_url}
-              id={product.id}
-              handleClick={product.id}
-            />
-          )
-        })}
+            url={product.image_url}
+            id={product.id}
+            handleClick={product.id}
+          />
+        ))}
       </ListProducts>
       <Footer>
         <Pagination />
@@ -73,8 +76,7 @@ export default function Home({ data: { allProducts, _allProductsMeta }}) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const { data } = await client.query({ query: allProducts });
-  console.log('rodou');
 
   // Pass data to the page via props
-  return { props: { data } }
+  return { props: { data } };
 }
