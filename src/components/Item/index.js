@@ -9,7 +9,13 @@ export function Item({
   return (
     <Link href={`/product/${handleClick}`}>
       <Container>
-        <Image src={url} width={256} height={300} alt={name} />
+        <Image
+          src={url}
+          objectFit="cover"
+          width={256}
+          height={300}
+          alt={name}
+        />
         <ItemInfo>
           <p>{name}</p>
           <span>{price}</span>

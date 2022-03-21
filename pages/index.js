@@ -32,27 +32,12 @@ export default function Home({ data: { allProducts, _allProductsMeta } }) {
     const { data } = await client.query({ query: nextPage, variables: { page: currentPage } });
 
     setProducts(data.allProducts);
-  }, []);
-
-  async function productsFiltered(type) {
-    const { data } = await client.query({ query: productsFilter, variables: { filterType: type } });
-
-    const filteredTotal = data._allProductsMeta.count;
-    dispatch(allProductsCount({ total: filteredTotal }));
-
-    setProducts(data.allProducts);
-  }
+  }, [currentPage]);
 
   return (
     <>
       <Navbar />
       <Pagination />
-      <button
-        type="button"
-        onClick={() => productsFiltered('mugs')}
-      >
-        setFilter
-      </button>
       <ListProducts>
         {products.map((product) => (
           <Item

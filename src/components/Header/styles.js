@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   width: 100%;
+  height: 80px;
   background-color: #fff;
 `;
 
 export const Head = styled.div`
   width: 100%;
-  max-width: 1140px;
+  max-width: 1120px;
   margin: 0 auto;
 
   display: flex;
@@ -17,6 +18,7 @@ export const Head = styled.div`
   h1 {
     font-family: 'Saira Stencil One';
     font-size: 40px;
+    font-weight: 400;
     color: ${({ theme }) => theme.headerLogo}
   }
 
@@ -45,7 +47,6 @@ export const Search = styled.div`
   margin: 19px 0;
 
   width: 352px;
-  /* max-width: 352px; */
 
   background: #F3F5F6;
   padding: 10px 16px;
@@ -54,10 +55,10 @@ export const Search = styled.div`
   input {
     width: 100%;
     border: none;
-    padding: 5px;
     background: transparent;
     outline: none;
-    color: ${({ theme }) => theme.textColor}
+    color: ${({ theme }) => theme.textColor};
+    font-size: 14px;
   }
 
   svg {

@@ -15,11 +15,13 @@ export function Header() {
         <Content>
           <Search>
             <input placeholder="Procurando por algo específico?" />
-            <FiSearch size={20} />
+            <FiSearch size={16} />
           </Search>
           <Shopping>
-            <FiShoppingBag size={24} />
-            <span>{itens}</span>
+            <FiShoppingBag size={22} />
+            {itens !== 0 && (
+              <span>{itens}</span>
+            )}
           </Shopping>
         </Content>
       </Head>

@@ -1,15 +1,29 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: 0.3s all ease;
+
+  overflow: hidden;
+  border: none;
+  border-radius: 8px 8px 4px 4px;
 
   img {
-    width: 100%;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    height: 300px;
+    border-radius: 8px 8px 0px 0px;
+    transition: transform 0.3s;
+    transform: scale(1.15);
+  }
+
+  &:hover, &:focus {
+    transform: scale(1.03);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+
+    img {
+      transform: scale(1);
+    }
   }
 `;
 
