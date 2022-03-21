@@ -27,5 +27,6 @@ module.exports = {
     'no-shadow': 'off',
     'no-param-reassign': 'off',
     'no-unused-vars': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
   },
 };

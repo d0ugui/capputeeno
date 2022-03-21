@@ -4,8 +4,11 @@ import Head from 'next/head';
 //* Theme
 import { ThemeProvider } from 'styled-components';
 
-//* GraphQL
+//* Context
 import { ApolloProvider } from '@apollo/client';
+import { StoreProvider } from '../src/context/storeContext';
+
+//* GraphQL
 import client from '../src/client/apollo';
 
 //* Components
@@ -17,7 +20,7 @@ import GlobalStyles from '../src/styles/global';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <StoreProvider>
       <Head>
         <title>capputeeno</title>
         <meta name="theme-color" content="#06092B" />
@@ -33,7 +36,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ThemeProvider>
       </ApolloProvider>
-    </>
+    </StoreProvider>
   );
 }
 

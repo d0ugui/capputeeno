@@ -1,10 +1,21 @@
+//* React
+import { useContext } from 'react';
+
+//* Context
+import { StoreContext } from '../../context/storeContext';
+
+//* Components
 import PaginationItem from '../PaginationItem';
 
+//* Styles
 import { Container, Content } from './styles';
 
 export function Pagination() {
-  const currentPage = 1;
-  const totalPages = 2;
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+  } = useContext(StoreContext);
 
   const siblingsCount = 1;
 
@@ -12,10 +23,6 @@ export function Pagination() {
     return [...new Array(to - from)]
       .map((_, index) => from + index + 1)
       .filter((page) => page > 0);
-  }
-
-  function handlePage(indexPage) {
-    dispatch(setPage({ page: indexPage }));
   }
 
   const previousPage = currentPage > 1
@@ -40,7 +47,7 @@ export function Pagination() {
         ))}
 
         <PaginationItem
-          onClick={() => handlePage(page)}
+          onClick={() => handlePage(currentPage)}
           selected
           disabled
         >
@@ -59,14 +66,14 @@ export function Pagination() {
 
         <PaginationItem
           type="submit"
-          onClick={() => console.log('next')}
+          onClick={() => setCurrentPage((prevState) => prevState - 1)}
           disabled={currentPage === 1}
         >
           &lt;
         </PaginationItem>
         <PaginationItem
           type="submit"
-          onClick={() => console.log('prev')}
+          onClick={() => setCurrentPage((prevState) => prevState + 1)}
           disabled={currentPage === totalPages}
         >
           &gt;
