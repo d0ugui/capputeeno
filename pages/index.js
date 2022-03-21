@@ -1,9 +1,5 @@
 //* Hooks
-import React, { useState, useEffect } from 'react';
-
-//* Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { allProductsCount } from '../src/features/page';
+import React, { useState } from 'react';
 
 //* GraphQL
 import client from '../src/client/apollo';
@@ -20,19 +16,7 @@ import { Item } from '../src/components/Item';
 import { ListProducts, Footer } from '../src/styles/home';
 
 export default function Home({ data: { allProducts, _allProductsMeta } }) {
-  const dispatch = useDispatch();
-
   const [products, setProducts] = useState(allProducts);
-  const currentPage = useSelector((state) => state.page.currentPage);
-
-  useEffect(async () => {
-    const totalProd = _allProductsMeta.count;
-    dispatch(allProductsCount({ total: totalProd }));
-
-    const { data } = await client.query({ query: nextPage, variables: { page: currentPage } });
-
-    setProducts(data.allProducts);
-  }, [currentPage]);
 
   return (
     <>

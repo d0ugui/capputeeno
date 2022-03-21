@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { FiSearch, FiShoppingBag } from 'react-icons/fi';
 
 import {
@@ -6,8 +5,6 @@ import {
 } from './styles';
 
 export function Header() {
-  const itens = useSelector((state) => state.cart.value.length);
-
   return (
     <Container>
       <Head>
@@ -19,9 +16,7 @@ export function Header() {
           </Search>
           <Shopping>
             <FiShoppingBag size={22} />
-            {itens !== 0 && (
-              <span>{itens}</span>
-            )}
+            <span>0</span>
           </Shopping>
         </Content>
       </Head>
