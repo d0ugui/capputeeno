@@ -28,5 +28,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-unused-vars': 'off',
     'react/jsx-no-constructed-context-values': 'off',
+    'no-underscore-dangle': 'off',
   },
 };

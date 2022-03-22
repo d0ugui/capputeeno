@@ -11,7 +11,7 @@ export function Navbar() {
     {
       id: 1,
       name: 'Todos os produtos',
-      category: ' ',
+      category: 'all',
     },
     {
       id: 2,

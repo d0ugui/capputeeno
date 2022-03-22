@@ -12,69 +12,45 @@ import { Container, Content } from './styles';
 
 export function Pagination() {
   const {
-    currentPage,
-    setCurrentPage,
     totalPages,
+    currentPage,
+    handleChangeProductPage,
   } = useContext(StoreContext);
-
-  const siblingsCount = 1;
-
-  function generatePagesArray(from, to) {
-    return [...new Array(to - from)]
-      .map((_, index) => from + index + 1)
-      .filter((page) => page > 0);
-  }
-
-  const previousPage = currentPage > 1
-    ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
-    : [];
-
-  const nextPage = currentPage < totalPages
-    ? generatePagesArray(currentPage, Math.min(currentPage + siblingsCount, totalPages))
-    : [];
+  const pages = [...Array(totalPages)].map((_, index) => index);
 
   return (
     <Container>
       <Content>
-        {previousPage.length > 0 && previousPage.map((page) => (
+        {pages.length > 1 ? (
+          pages.map((page) => (
+            <PaginationItem
+              key={page}
+              selected={page === currentPage}
+              onClick={() => handleChangeProductPage(page)}
+            >
+              {page + 1}
+            </PaginationItem>
+          ))
+        ) : (
           <PaginationItem
-            onClick={() => handlePage(page)}
-            key={page}
-            disabled
+            selected
+            onClick={() => handleChangeProductPage(0)}
           >
-            {page}
+            {1}
           </PaginationItem>
-        ))}
-
-        <PaginationItem
-          onClick={() => handlePage(currentPage)}
-          selected
-          disabled
-        >
-          {currentPage}
-        </PaginationItem>
-
-        {nextPage.length > 0 && nextPage.map((page) => (
-          <PaginationItem
-            onClick={() => handlePage(page)}
-            key={page}
-            disabled
-          >
-            {page}
-          </PaginationItem>
-        ))}
+        )}
 
         <PaginationItem
           type="submit"
-          onClick={() => setCurrentPage((prevState) => prevState - 1)}
-          disabled={currentPage === 1}
+          onClick={() => handleChangeProductPage(currentPage - 1)}
+          disabled={currentPage === 0}
         >
           &lt;
         </PaginationItem>
         <PaginationItem
           type="submit"
-          onClick={() => setCurrentPage((prevState) => prevState + 1)}
-          disabled={currentPage === totalPages}
+          onClick={() => handleChangeProductPage(currentPage + 1)}
+          disabled={currentPage + 1 === totalPages}
         >
           &gt;
         </PaginationItem>

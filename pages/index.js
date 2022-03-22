@@ -9,7 +9,6 @@ import { allProducts } from '../src/graphql/products';
 import { Navbar } from '../src/components/Navbar';
 import { Pagination } from '../src/components/Pagination';
 import { ListProducts } from '../src/components/ListProducts';
-import { Item } from '../src/components/Item';
 
 //* Context
 import { StoreContext } from '../src/context/storeContext';
@@ -21,12 +20,12 @@ export default function Home({ data: { allProducts, _allProductsMeta } }) {
   const {
     products,
     setProducts,
-    productsPage,
+    getTotalPages,
   } = useContext(StoreContext);
 
   useEffect(() => {
     setProducts(allProducts);
-    productsPage(_allProductsMeta.count);
+    getTotalPages(_allProductsMeta.count);
   }, []);
 
   return (
