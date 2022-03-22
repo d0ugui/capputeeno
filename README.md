@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">🚀 Front-end challenge 🚀</p>
 
-## Getting Started
+<img align="center" src="src/assets/tela.png" alt="capputeeno">
 
-First, run the development server:
+
+# 📖 Projeto
+
+Este projeto é resultado de um desafio elaborado pela Rocketseat, [Front-end Challenge](https://github.com/Rocketseat/frontend-challenge). O desafio consiste em implementar um e-commerce para venda de canecas e camisetas que tenha as seguintes funcionalidades:
+
+- [x] Catálogo de produtos com paginação
+- [x] Filtragem produtos por categoria
+- [x] Busca por nome do produto
+- [x] Adicionar e remover produtos do carrinho
+- [x] Finalizar compra
+
+
+## 🚀 Como executar
+
+Para inicializar o projeto localmente siga os passos descritos abaixo:
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Clone o repositório
+$ git clone https://github.com/d0ugui/capputeeno.git
+
+# Entre no repositório
+$ cd capputeeno
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação
+$ yarn start
+
+# Acesse a pasta api
+$ cd capputeeno/api
+
+# Inicie a API GraphQL
+$ yarn start
+
+# Acessar a aplicação
+$ http://localhost:3000
+
+# Playground da API GraphQL
+$ http://localhost:3333
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Tecnologias
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ [![My Skills](https://skillicons.dev/icons?i=nextjs,graphql,styledcomponents,apollo)](https://skillicons.dev)
