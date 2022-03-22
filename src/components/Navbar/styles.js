@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.nav`
   width: 100%;
-  max-width: 1140px;
+  max-width: 1120px;
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   align-items: center;
 
   margin-top: 34px;

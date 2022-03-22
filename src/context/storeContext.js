@@ -1,8 +1,10 @@
+//* Hooks
 import React, { createContext, useState } from 'react';
 
-import client from '../client/apollo';
-import { allProducts } from '../graphql/products';
-import nextPage from '../graphql/nextPage';
+//* GraphQL
+import client from '../services/apollo';
+import getAllProducts from '../graphql/getAllProducts';
+import getNextPageWithFilter from '../graphql/getNextPageWithFilter';
 
 export const StoreContext = createContext();
 
@@ -12,19 +14,15 @@ export function StoreProvider({ children }) {
   const [totalPages, setTotalPages] = useState(0);
   const [filtered, setFiltered] = useState('all');
 
-  function getTotalPages(totalProducts) {
-    setTotalPages(Math.round(totalProducts / 12));
-  }
-
   async function handleFilterProducts(category) {
     if (category === 'all') {
       //* Query
       const { data } = await client.query({
-        query: allProducts, variables: { page: currentPage },
+        query: getAllProducts, variables: { page: currentPage },
       });
 
       //* Total de páginas
-      getTotalPages(data._allProductsMeta.count);
+      setTotalPages((Math.round(data._allProductsMeta.count / 12)));
 
       //* Setando produtos
       setProducts(data.allProducts);
@@ -35,11 +33,11 @@ export function StoreProvider({ children }) {
 
     //* Query
     const { data } = await client.query({
-      query: nextPage, variables: { page: currentPage, filterType: category },
+      query: getNextPageWithFilter, variables: { page: currentPage, filterType: category },
     });
 
     //* Total de páginas
-    getTotalPages(data._allProductsMeta.count);
+    setTotalPages((Math.round(data._allProductsMeta.count / 12)));
 
     //* Setando produtos
     setProducts(data.allProducts);
@@ -51,7 +49,7 @@ export function StoreProvider({ children }) {
   async function handleChangeProductPage(pageNumber) {
     if (filtered === 'all') {
       const { data } = await client.query({
-        query: allProducts, variables: { page: pageNumber },
+        query: getAllProducts, variables: { page: pageNumber },
       });
 
       setCurrentPage(pageNumber);
@@ -59,11 +57,11 @@ export function StoreProvider({ children }) {
     }
 
     const { data } = await client.query({
-      query: nextPage, variables: { page: pageNumber, filterType: filtered },
+      query: getNextPageWithFilter, variables: { page: pageNumber, filterType: filtered },
     });
 
     setCurrentPage(pageNumber);
-    setProducts(data.allProducts);
+    return setProducts(data.allProducts);
   }
 
   return (
@@ -76,7 +74,7 @@ export function StoreProvider({ children }) {
       handleFilterProducts,
       handleChangeProductPage,
       totalPages,
-      getTotalPages,
+      setTotalPages,
     }}
     >
       {children}

@@ -1,7 +1,13 @@
+//* Hooks
 import { useContext } from 'react';
+
+//* Context
 import { StoreContext } from '../../context/storeContext';
 
+//* Components
 import FilterItem from '../FilterItem';
+
+//* Styles
 import { Container, Filters, Organized } from './styles';
 
 export function Navbar() {

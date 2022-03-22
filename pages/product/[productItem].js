@@ -1,8 +1,13 @@
+//* Next
 import Link from 'next/link';
+import Image from 'next/image';
 
+//* Icons
 import { FiShoppingBag } from 'react-icons/fi';
 import { GrUndo } from 'react-icons/gr';
-import client from '../../src/client/apollo';
+
+//* GraphQL
+import client from '../../src/services/apollo';
 import uniqueProduct from '../../src/graphql/uniqueProduct';
 
 import { Container, Content, ProductDetails } from './styles';
@@ -17,7 +22,7 @@ export default function Product({ data }) {
         </span>
       </Link>
       <Content>
-        <img src={data.Product.image_url} />
+        <Image src={data.Product.image_url} width={640} height={580} />
         <ProductDetails>
           <span>{data.Product.category}</span>
           <h1>{data.Product.name}</h1>

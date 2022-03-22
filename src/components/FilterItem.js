@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export default styled.li`
+  cursor: pointer;
+
   span {
     text-decoration: none;
     position: relative;
@@ -18,10 +20,6 @@ export default styled.li`
     left: 0;
     bottom: -5px;
     transition: 0.3s ease-in;
-  }
-
-  span:hover:after {
-    width: 100%;
   }
 
   ${({ selected }) => css`

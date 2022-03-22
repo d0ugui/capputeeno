@@ -13,6 +13,10 @@ export default styled.button`
     background: ${selected ? theme.buttonPaginationSelected : theme.buttonsPagination};
   `};
 
+  ${({ disabled }) => css`
+    opacity: ${disabled && 0.25} ;
+  `}
+
   &:hover {
     background: ${({ theme }) => theme.buttonPaginationSelected};
   }

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const allProducts = gql`
+export default gql`
   query AllProducts($page: Int = 0){
     allProducts (page: $page, perPage: 12) {
       id

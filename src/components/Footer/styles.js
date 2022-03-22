@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Footer = styled.div`
+export const Container = styled.footer`
   width: 100%;
   margin-right: auto;
   margin-top: 74px;

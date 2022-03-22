@@ -9,7 +9,7 @@ import { ApolloProvider } from '@apollo/client';
 import { StoreProvider } from '../src/context/storeContext';
 
 //* GraphQL
-import client from '../src/client/apollo';
+import client from '../src/services/apollo';
 
 //* Components
 import { Header } from '../src/components/Header';
