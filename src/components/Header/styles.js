@@ -8,7 +8,7 @@ export const Container = styled.header`
 
 export const Head = styled.div`
   width: 100%;
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
 
   display: flex;

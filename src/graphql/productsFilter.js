@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-export default gql`
+export const filteredProducts = gql`
   query AllProducts($filterType: String) {
     allProducts (page: 1, perPage: 12, filter: { category: $filterType} ) {
       id
@@ -10,8 +10,8 @@ export default gql`
     }
 
     _allProductsMeta(filter: { category: $filterType}) {
-    	count
-  	}
+      count
+    }
   }
 
 `;

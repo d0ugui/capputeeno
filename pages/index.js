@@ -1,22 +1,21 @@
 //* Hooks
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 //* GraphQL
 import client from '../src/client/apollo';
 import { allProducts } from '../src/graphql/products';
-import nextPage from '../src/graphql/nextPage';
-import productsFilter from '../src/graphql/productsFilter';
 
 //* Components
 import { Navbar } from '../src/components/Navbar';
 import { Pagination } from '../src/components/Pagination';
+import { ListProducts } from '../src/components/ListProducts';
 import { Item } from '../src/components/Item';
 
 //* Context
 import { StoreContext } from '../src/context/storeContext';
 
 //* Styles
-import { ListProducts, Footer } from '../src/styles/home';
+import { Footer } from '../src/styles/home';
 
 export default function Home({ data: { allProducts, _allProductsMeta } }) {
   const {
@@ -25,31 +24,16 @@ export default function Home({ data: { allProducts, _allProductsMeta } }) {
     productsPage,
   } = useContext(StoreContext);
 
-  setProducts(allProducts);
-  productsPage(_allProductsMeta.count);
+  useEffect(() => {
+    setProducts(allProducts);
+    productsPage(_allProductsMeta.count);
+  }, []);
 
   return (
     <>
       <Navbar />
       <Pagination />
-      <ListProducts>
-        {products.map((product) => (
-          <Item
-            key={product.id}
-            name={product.name}
-            price={
-                (product.price_in_cents / 100)
-                  .toLocaleString(
-                    'pt-BR',
-                    { style: 'currency', currency: 'BRL' },
-                  )
-              }
-            url={product.image_url}
-            id={product.id}
-            handleClick={product.id}
-          />
-        ))}
-      </ListProducts>
+      <ListProducts products={products} />
       <Footer>
         <Pagination />
       </Footer>

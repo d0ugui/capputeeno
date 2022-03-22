@@ -20,7 +20,7 @@ import GlobalStyles from '../src/styles/global';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <StoreProvider>
+    <>
       <Head>
         <title>capputeeno</title>
         <meta name="theme-color" content="#06092B" />
@@ -29,14 +29,18 @@ function MyApp({ Component, pageProps }) {
           content="Projeto de desafio front end by Rocketseat"
         />
       </Head>
+
       <ApolloProvider client={client}>
-        <ThemeProvider theme={themes.light}>
-          <GlobalStyles />
-          <Header />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider theme={themes.light}>
+            <GlobalStyles />
+            <Header />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </StoreProvider>
       </ApolloProvider>
-    </StoreProvider>
+
+    </>
   );
 }
 

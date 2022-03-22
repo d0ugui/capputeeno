@@ -1,26 +1,44 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { StoreContext } from '../../context/storeContext';
 
 import FilterItem from '../FilterItem';
 import { Container, Filters, Organized } from './styles';
 
 export function Navbar() {
-  const [filters, setFilters] = useState([
+  const { filtered, setFiltered, handleFilterProducts } = useContext(StoreContext);
+
+  const filtersOptions = [
     {
+      id: 1,
       name: 'Todos os produtos',
+      category: ' ',
     },
     {
+      id: 2,
       name: 'Camisetas',
+      category: 't-shirts',
     },
     {
+      id: 3,
       name: 'Canecas',
+      category: 'mugs',
     },
-  ]);
+  ];
+
+  function handleFilterSelected(category) {
+    setFiltered(category);
+    handleFilterProducts(category);
+  }
 
   return (
     <Container>
       <Filters>
-        {filters?.map((filter) => (
-          <FilterItem>
+        {filtersOptions?.map((filter) => (
+          <FilterItem
+            key={filter.id}
+            selected={filter.category === filtered}
+            onClick={() => handleFilterSelected(filter.category)}
+          >
             <span>
               {filter.name}
             </span>
