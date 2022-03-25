@@ -2,17 +2,19 @@
 
 <img align="center" src="src/assets/tela.png" alt="capputeeno">
 
-
 # 📖 Projeto
 
 Este projeto é resultado de um desafio elaborado pela Rocketseat, [Front-end Challenge](https://github.com/Rocketseat/frontend-challenge). O desafio consiste em implementar um e-commerce para venda de canecas e camisetas que tenha as seguintes funcionalidades:
 
 - [x] Catálogo de produtos com paginação
-- [x] Filtragem produtos por categoria
-- [x] Busca por nome do produto
-- [x] Adicionar e remover produtos do carrinho
-- [x] Finalizar compra
+- [x] Filtragem de produtos por categoria
+- [] Busca por nome do produto
+- [] Adicionar e remover produtos do carrinho
+- [] Finalizar compra
 
+## 🧪 Tecnologias
+
+ [![My Skills](https://skillicons.dev/icons?i=nextjs,graphql,styledcomponents,apollo)](https://skillicons.dev)
 
 ## 🚀 Como executar
 
@@ -44,6 +46,6 @@ $ http://localhost:3000
 $ http://localhost:3333
 ```
 
-## 🧪 Tecnologias
+## 📝 License
 
- [![My Skills](https://skillicons.dev/icons?i=nextjs,graphql,styledcomponents,apollo)](https://skillicons.dev)
+Esse projeto está sob a licença MIT.
